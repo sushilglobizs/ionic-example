@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <ion-list *ngIf="posts">
+    <ion-item *ngFor="let post of posts" routerLink="/tabs/home/post/{{ post.id }}">
+      <ion-skeleton-text *ngIf="!thumbnailLoaded[post.id]" slot="start" animated="true" style="height: 10px; width: 10px; border-radius: 50%;"></ion-skeleton-text>
+      <ion-img [hidden]="!thumbnailLoaded[post.id]" (ionImgDidLoad)="imgLoaded(post.id)" class="circular thumbnail" slot="start" src="{{ post.thumbnail }}"></ion-img>
+      <ion-label>{{ post.title }}</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div *ngIf="!posts">
+    <ion-skeleton-text *ngFor="let i of [].constructor(5)" animated="true" style="height: 60px; width: 95%;" class="ion-margin-bottom"></ion-skeleton-text>
+  </div>
+
+</ion-content>

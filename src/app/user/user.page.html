@@ -5,9 +5,57 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">user</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
+
+  <swiper-container [slidesPerView]="4.5">
+    <swiper-slide *ngFor="let src of slides; index as i" [ngClass]="{'ion-margin-start': i === 0}">
+      <ion-avatar>
+        <img [src]="src" />
+      </ion-avatar>
+    </swiper-slide>
+  </swiper-container>
+
+  <swiper-container class="ion-margin-top" [slidesPerView]="1.2" autoplay="true" effect="fade" pagination="bullets" parallax="true">
+    <swiper-slide *ngFor="let src of slides; index as i">
+        <ion-img [src]="src"></ion-img>
+    </swiper-slide>
+  </swiper-container>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item class="ion-no-padding">
+        <ion-avatar slot="start">
+          <img src="../../assets/1.png">
+        </ion-avatar>
+        <ion-label>
+          <b>Marvin</b>
+          <div><ion-note>{{ '@' }}marvin</ion-note></div>
+        </ion-label>
+        <ion-icon (click)="menuClicked()" slot="end" name="ellipsis-horizontal"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-img class="rounded-12" src="../../assets/6.png"></ion-img>
+      <ion-item class="ion-no-padding">
+        <ion-label>
+          <span class="ion-margin-end" (click)="favourite()">
+            <ion-icon *ngIf="!favourited" name="heart-outline"></ion-icon>
+            <ion-icon *ngIf="favourited" name="heart" color="danger"></ion-icon>
+            <span class="font-12">528</span>
+          </span>
+          <span class="ion-margin-end"><ion-icon name="chatbox-ellipses-outline"></ion-icon> <span class="font-12">21</span></span>
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-label>
+        <ion-note slot="end">25 mins ago</ion-note>
+      </ion-item>
+      <div><b>marvin</b> My name is something something</div>
+    </ion-card-content>
+
+  </ion-card>
+
 </ion-content>

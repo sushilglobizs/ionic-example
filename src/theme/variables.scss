@@ -1,3 +1,6 @@
+ion-img.rounded-6::part(image) {
+  border-radius: 6px;
+}
 ion-img.rounded-12::part(image) {
   border-radius: 12px;
 }
@@ -6,6 +9,27 @@ ion-img.rounded-12::part(image) {
 }
 ion-card {
   box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.2)
+}
+.font-28 {
+  font-size: 28px;
+}
+.font-30 {
+  font-size: 30px;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.my-card {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.2);
+}
+.to-cart-button {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  width: 90%;
+  left: 0;
 }
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/

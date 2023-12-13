@@ -1,0 +1,68 @@
+<ion-header [translucent]="true" class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-icon slot="start" size="large" name="menu-outline"></ion-icon>
+    <ion-icon slot="end" size="large" name="bag-handle-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" class="ion-no-border ion-padding-horizontal">
+    <ion-toolbar>
+      <ion-icon slot="start" size="large" name="menu-outline"></ion-icon>
+      <ion-icon slot="end" size="large" name="bag-handle-outline"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-margin-horizontal">
+    <ion-text color="dark">
+      <div class="font-30">Shop</div>
+      <div>Get cheapest goods for your everyday use</div>
+    </ion-text>
+  </div>
+
+  <ion-searchbar animated="true" placeholder="Search for goods"></ion-searchbar>
+
+  <ion-item lines="none">
+    <ion-label><b>NEWEST OFFER</b></ion-label>
+    <div slot="end">SEE ALL <ion-icon name="arrow-forward-outline"></ion-icon></div>
+  </ion-item>
+
+  <swiper-container [slidesPerView]="1.5">
+    <swiper-slide *ngFor="let product of newestOffers" class="ion-margin-start">
+      <ion-img (click)="goToProduct(product.id)" class="rounded-6" [src]="product.src"></ion-img>
+      <div class="ion-margin-top"><ion-text color="dark"><b>{{ product.name }}</b></ion-text></div>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label>
+          <ion-note color="danger">Now only ${{ product.offerPrice }}</ion-note>
+          <div><ion-note class="line-through">${{ product.price }}</ion-note></div>
+        </ion-label>
+        <ion-button slot="end" color="light">
+          <ion-icon color="danger" name="heart-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </swiper-slide>
+  </swiper-container>
+
+  <ion-item lines="none">
+    <ion-label><b>BY CATEGORIES</b></ion-label>
+    <div slot="end">SEE ALL <ion-icon name="arrow-forward-outline"></ion-icon></div>
+  </ion-item>
+
+  <swiper-container [slidesPerView]="2.5">
+    <swiper-slide class="ion-margin-start">
+      <div class="my-card">
+        <ion-img class="rounded-6" src="../../assets/gadget.png"></ion-img>
+        <div class="ion-margin-top"><ion-text color="dark"><b>Burger with Extra Cheese</b></ion-text></div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="ion-margin-start">
+      <ion-img class="rounded-6" src="../../assets/decoration.png"></ion-img>
+      <div class="ion-margin-top"><ion-text color="dark"><b>Pepperoni Pizza with Extra Cheese</b></ion-text></div>
+    </swiper-slide>
+    <swiper-slide class="ion-margin-start">
+      <ion-img class="rounded-6" src="../../assets/office.png"></ion-img>
+      <div class="ion-margin-top"><ion-text color="dark"><b>Strawberry Flavoured Donut</b></ion-text></div>
+    </swiper-slide>
+  </swiper-container>
+
+</ion-content>

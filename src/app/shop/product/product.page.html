@@ -1,0 +1,67 @@
+<ion-header [translucent]="true" class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button class="ion-no-margin ion-no-padding"></ion-back-button>
+    </ion-buttons>
+    <ion-icon slot="end" size="large" name="share-social-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" class="ion-no-border ion-padding-horizontal">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-icon slot="end" size="large" name="share-social-outline"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-margin-horizontal">
+    <div><ion-text color="dark" class="font-28"><b>{{ product.name }}</b></ion-text></div>
+    <div><ion-note>By <b><ion-text color="dark">{{ product.brand }}</ion-text></b></ion-note></div>
+
+    <div class="ion-margin-vertical"><ion-img [src]="product.src"></ion-img></div>
+    <div>
+      <ion-button color="light">
+        <ion-icon color="danger" name="heart-outline"></ion-icon>&nbsp;
+        <ion-text color="danger">Wishlist</ion-text>
+      </ion-button>
+      <ion-button color="light">
+        <ion-icon name="bag-handle-outline"></ion-icon>&nbsp;
+        <ion-text>Add to cart</ion-text>
+      </ion-button>
+    </div>
+    <div class="ion-margin-vertical">
+      <ion-text color="dark"><b>ABOUT PRODUCT</b></ion-text>
+    </div>
+    <div>
+      <ion-text>{{ product.description }}</ion-text>
+    </div>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-label>
+        <span class="line-through">${{ product.price }}</span>
+        <div><ion-text color="danger">${{ product.offerPrice }}</ion-text> </div>
+      </ion-label>
+      <div slot="end">
+        <ion-icon *ngFor="let i of [].constructor(5)" name="star-outline"></ion-icon>
+        <div><ion-note>From 256 users</ion-note></div>
+      </div>
+    </ion-item>
+    <div>APPLE</div>
+    <br><br><br><br>
+  </div>
+
+
+  <div class="ion-margin-horizontal to-cart-button">
+    <ion-item lines="none" color="danger">
+      <ion-label color="light">
+        BUY NOW
+        <div><ion-note color="light">Continue to fill information</ion-note></div>
+      </ion-label>
+      <ion-button color="light">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+</ion-content>

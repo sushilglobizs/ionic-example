@@ -14,19 +14,20 @@ export class ShopPage implements OnInit {
 
   constructor(
     private shopService: ShopService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getNewestOffers();
   }
 
+  // fetch new offers
   getNewestOffers() {
     this.newestOffers = this.shopService.getNewestOffers();
   }
 
   goToProduct(id: number) {
-    this.router.navigateByUrl('/tabs/shop/product/' + id);
+    this.router.navigateByUrl('/tabs/shop/product/' + id);      // navigate to product page
   }
 
 }

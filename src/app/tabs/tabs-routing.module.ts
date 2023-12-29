@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../books/books.module').then( m => m.BooksPageModule)
       },
       {
+        path: 'book2',
+        loadChildren: () => import('../book2/book2.module').then( m => m.Book2PageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

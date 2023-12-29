@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Book</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">View Book</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="book">
+    <ion-card-content>
+      <ion-text color="dark">Title: <b>{{ book.data.attributes.title }}</b></ion-text>
+      <div>
+        <ion-note>Author: <b>{{ book.data.attributes.author }}</b></ion-note>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

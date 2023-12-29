@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Book</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Create Book</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <form [formGroup]="bookForm" (ngSubmit)="formSubmit()">
+      <ion-item>
+        <ion-input formControlName="title" label="Book title" labelPlacement="floating" placeholder="Enter the title of the book"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input formControlName="author" label="Author name" labelPlacement="floating" placeholder="Enter the author name"></ion-input>
+      </ion-item>
+  
+      <ion-button type="submit">Submit</ion-button>
+    </form>
+  </div>
+
+</ion-content>

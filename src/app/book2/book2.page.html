@@ -11,7 +11,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list *ngIf="bookList">
+  <div class="curve"></div>
+
+  <ion-list class="books-list" *ngIf="bookList">
     <ion-item *ngFor="let book of bookList.data" (click)="viewBook(book.id)">
       <ion-label>
         {{ book.attributes.title }}

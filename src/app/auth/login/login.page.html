@@ -21,7 +21,9 @@
         <ion-input formControlName="password" label="Password" labelPlacement="floating" placeholder="Enter password" type="password"></ion-input>
       </ion-item>
   
-      <ion-button type="submit">Submit</ion-button>
+      <ion-button *ngIf="!submitting" type="submit">Login</ion-button>
+      <ion-button *ngIf="submitting" disabled="true">Logging in</ion-button>
     </form>
   </div>
+
 </ion-content>

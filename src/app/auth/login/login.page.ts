@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from './login.model';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,16 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   loginForm!: FormGroup;
+  submitting = false;
 
   constructor(
     private fb: FormBuilder,
     private loginSevice: LoginService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.initForm();
   }
 
@@ -36,17 +39,18 @@ export class LoginPage implements OnInit {
       password: this.loginForm.value.password
     };
 
+    this.submitting = true;
+
     this.loginSevice.login(data).subscribe({
       // status code 200 (SUCCESS)
       next: res => {
-        // TODO: store jwt in local storage
-        
+        this.authService.saveToken(res.jwt);
 
-        // TODO: redirect user to Home
-        // this.router.navigateByUrl('/tabs/home');
+        this.router.navigateByUrl('/tabs/home');
       },
       error: err => {
         console.log('ERROR', err);
+        this.submitting = false;
       }
     });
   }

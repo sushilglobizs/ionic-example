@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -8,6 +9,14 @@ register();
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  constructor() {}
+export class AppComponent implements OnInit {
+  constructor(private storage: Storage) {}
+
+  ngOnInit(): void {
+    this.initStorage();
+  }
+
+  async initStorage() {
+    await this.storage.create();
+  }
 }

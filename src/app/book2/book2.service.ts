@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './../auth/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from './book2.model';
@@ -10,11 +11,16 @@ import { BookView } from './book2-view/book-view.model';
 export class Book2Service {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private authService: AuthService,
   ) { }
 
-  getBooks(): Observable<Book> {
-    return this.httpClient.get<Book>('https://dailystandup.globizs.com/api/books');
+  getBooks(token: string): Observable<Book> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.httpClient.get<Book>('https://dailystandup.globizs.com/api/books', {headers});
   }
 
   getBook(id: number): Observable<BookView> {

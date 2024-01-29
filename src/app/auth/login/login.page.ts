@@ -46,6 +46,8 @@ export class LoginPage implements OnInit {
       next: res => {
         this.authService.saveToken(res.jwt);
 
+        this.submitting = false;
+
         this.router.navigateByUrl('/tabs/home');
       },
       error: err => {

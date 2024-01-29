@@ -16,8 +16,8 @@ export class AuthService {
     await this.storage.set('token', token);
   }
 
-  async getToken(key: string) {
-    await this.storage.get(key);
+  async getToken() {
+    return await this.storage.get('token');
   }
 
   async deleteToken(key: string) {
